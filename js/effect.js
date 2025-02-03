@@ -75,21 +75,21 @@ $('document').ready(function(){
         });
     }
 
-   	 // Play the song immediately
-  	  var audio = $('.song')[0];
-   	 audio.play();
+    // Play the song immediately
+    var audio = $('.song')[0];
+    audio.play();
     
-  	  // Disable the button initially
-  	  $('#turn_on').prop('disabled', true);
+    // Disable the button initially
+    $('#turn_on').prop('disabled', true);
 
-   	 // Enable the button after 20 seconds
-   	 setTimeout(function() {
-      	  $('#turn_on').prop('disabled', false);
-   	 }, 20000);
+    // Enable the button after 20 seconds
+    setTimeout(function() {
+        $('#turn_on').prop('disabled', false);
+    }, 20000);
 
-    	$('#turn_on').click(function(){
-      	  turnOnAndPlay();
-		});
+    $('#turn_on').click(function(){
+        turnOnAndPlay();
+	});
 	$('#bannar_coming').click(function(){
 		$('.bannar').addClass('bannar-come');
 		$(this).fadeOut('slow').delay(4500).promise().done(function(){
@@ -282,3 +282,4 @@ $('document').ready(function(){
 
 
 //alert('hello');
+
