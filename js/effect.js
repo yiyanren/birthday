@@ -52,34 +52,44 @@ $('document').ready(function(){
 		$('#b88').animate({top:240, left: vw+300*size},500);
 	});
 
-	$('#turn_on').click(function(){
-		$('#bulb_yellow').addClass('bulb-glow-yellow');
-		$('#bulb_red').addClass('bulb-glow-red');
-		$('#bulb_blue').addClass('bulb-glow-blue');
-		$('#bulb_green').addClass('bulb-glow-green');
-		$('#bulb_pink').addClass('bulb-glow-pink');
-		$('#bulb_orange').addClass('bulb-glow-orange');
-		$('body').addClass('peach');
-		$(this).fadeOut('slow').delay(5000).promise().done(function(){
-			$('#play').fadeIn('slow');
-		});
-	});
-	$('#play').click(function(){
-		var audio = $('.song')[0];
+	function turnOnAndPlay() {
+        $('#bulb_yellow').addClass('bulb-glow-yellow');
+        $('#bulb_red').addClass('bulb-glow-red');
+        $('#bulb_blue').addClass('bulb-glow-blue');
+        $('#bulb_green').addClass('bulb-glow-green');
+        $('#bulb_pink').addClass('bulb-glow-pink');
+        $('#bulb_orange').addClass('bulb-glow-orange');
+        $('body').addClass('peach');
+        var audio = $('.song')[0];
         audio.play();
         $('#bulb_yellow').addClass('bulb-glow-yellow-after');
-		$('#bulb_red').addClass('bulb-glow-red-after');
-		$('#bulb_blue').addClass('bulb-glow-blue-after');
-		$('#bulb_green').addClass('bulb-glow-green-after');
-		$('#bulb_pink').addClass('bulb-glow-pink-after');
-		$('#bulb_orange').addClass('bulb-glow-orange-after');
-		$('body').css('backgroud-color','#FFF');
-		$('body').addClass('peach-after');
-		$(this).fadeOut('slow').delay(4500).promise().done(function(){
-			$('#bannar_coming').fadeIn('slow');
-		});
-	});
+        $('#bulb_red').addClass('bulb-glow-red-after');
+        $('#bulb_blue').addClass('bulb-glow-blue-after');
+        $('#bulb_green').addClass('bulb-glow-green-after');
+        $('#bulb_pink').addClass('bulb-glow-pink-after');
+        $('#bulb_orange').addClass('bulb-glow-orange-after');
+        $('body').css('background-color', '#FFF');
+        $('body').addClass('peach-after');
+        $('#turn_on').fadeOut('slow').delay(5000).promise().done(function(){
+            $('#bannar_coming').fadeIn('slow');
+        });
+    }
 
+   	 // Play the song immediately
+  	  var audio = $('.song')[0];
+   	 audio.play();
+    
+  	  // Disable the button initially
+  	  $('#turn_on').prop('disabled', true);
+
+   	 // Enable the button after 20 seconds
+   	 setTimeout(function() {
+      	  $('#turn_on').prop('disabled', false);
+   	 }, 20000);
+
+    	$('#turn_on').click(function(){
+      	  turnOnAndPlay();
+		});
 	$('#bannar_coming').click(function(){
 		$('.bannar').addClass('bannar-come');
 		$(this).fadeOut('slow').delay(4500).promise().done(function(){
